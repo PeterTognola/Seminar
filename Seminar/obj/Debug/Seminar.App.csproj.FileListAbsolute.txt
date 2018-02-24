@@ -29,3 +29,9 @@ C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar\obj\Debug\Seminar.App.c
 C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar\obj\Debug\Seminar.App.csproj.CoreCompileInputs.cache
 C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar\obj\Debug\Seminar.dll
 C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar\obj\Debug\Seminar.pdb
+C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar\bin\Seminar.Business.dll
+C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar\bin\Seminar.Data.dll
+C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar\bin\Seminar.Business.pdb
+C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar\bin\Seminar.Business.dll.config
+C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar\bin\Seminar.Data.pdb
+C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar\bin\Seminar.Data.dll.config
