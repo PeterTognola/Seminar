@@ -1,129 +1,79 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
+using Seminar.Business.Mappers;
+using Seminar.Business.ViewModels;
 using Seminar.Data;
-using Seminar.Data.Entities;
 
 namespace Seminar.Controllers
 {
     public class CoursesController : Controller
     {
-        private SeminarDbContext db = new SeminarDbContext();
+        private readonly CourseMapper _courseMapper;
+
+        public CoursesController()
+        {
+            _courseMapper = new CourseMapper();
+        }
 
         // GET: Courses
-        public async Task<ActionResult> Index()
+        [HttpGet]
+        public ActionResult Index()
         {
-            return View(await db.Courses.ToListAsync());
+            using (var context = new SeminarDbContext())
+            {
+                return Json(context.Courses.AsEnumerable().Select(x => _courseMapper.MapToView(x)).ToList(), JsonRequestBehavior.AllowGet);
+            }
         }
 
-        // GET: Courses/Details/5
-        public async Task<ActionResult> Details(int? id)
+        // GET: Courses/Get/5
+        [HttpGet]
+        public async Task<ActionResult> Get(int? id)
         {
             if (id == null)
-            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Course course = await db.Courses.FindAsync(id);
-            if (course == null)
-            {
-                return HttpNotFound();
-            }
-            return View(course);
-        }
 
-        // GET: Courses/Create
-        public ActionResult Create()
-        {
-            return View();
+            using (var context = new SeminarDbContext())
+            {
+                var course = await context.Courses.FindAsync(id);
+                if (course == null) return HttpNotFound();
+
+                return Json(_courseMapper.MapToView(course), JsonRequestBehavior.AllowGet);
+            }
         }
 
         // POST: Courses/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        // [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create([Bind(Exclude = "Id")] CourseViewModel course)
+        {
+            if (!ModelState.IsValid) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            using (var context = new SeminarDbContext())
+            {
+                var model = _courseMapper.MapToModel(course);
+                context.Courses.Add(model);
+                await context.SaveChangesAsync();
+            }
+
+            return new HttpStatusCodeResult(HttpStatusCode.Created);
+        }
+
+        // PUT: Courses/Update/5
+        [HttpPut]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Name,Instructor,Room,From,To")] Course course)
+        public async Task<ActionResult> Update(int id, CourseViewModel course)
         {
-            if (ModelState.IsValid)
-            {
-                db.Courses.Add(course);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-
-            return View(course);
+            throw new NotImplementedException();
         }
 
-        // GET: Courses/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        // DELETE: Courses/Delete/5
+        [HttpDelete]
+        public async Task<ActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Course course = await db.Courses.FindAsync(id);
-            if (course == null)
-            {
-                return HttpNotFound();
-            }
-            return View(course);
-        }
-
-        // POST: Courses/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Instructor,Room,From,To")] Course course)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(course).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-            return View(course);
-        }
-
-        // GET: Courses/Delete/5
-        public async Task<ActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Course course = await db.Courses.FindAsync(id);
-            if (course == null)
-            {
-                return HttpNotFound();
-            }
-            return View(course);
-        }
-
-        // POST: Courses/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
-        {
-            Course course = await db.Courses.FindAsync(id);
-            db.Courses.Remove(course);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            throw new NotImplementedException();
         }
     }
 }

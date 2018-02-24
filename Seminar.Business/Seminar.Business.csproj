@@ -46,11 +46,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappers\CourseMapper.cs" />
+    <Compile Include="Mappers\IMapper.cs" />
+    <Compile Include="ViewModels\CourseViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Seminar.Data\Seminar.Data.csproj">
+      <Project>{2e03554b-3997-49b7-960e-90cbe4bc19ee}</Project>
+      <Name>Seminar.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

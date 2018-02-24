@@ -96,6 +96,13 @@
       <Project>{2E03554B-3997-49B7-960E-90CBE4BC19EE}</Project>
       <Name>Seminar.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Seminar\Seminar.App.csproj">
+      <Project>{179c71da-2f84-4c22-895a-84a7b512080a}</Project>
+      <Name>Seminar.App</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
