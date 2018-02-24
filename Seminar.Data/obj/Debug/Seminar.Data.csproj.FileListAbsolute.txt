@@ -1,0 +1,11 @@
+C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar.Data\bin\Debug\Seminar.Data.dll.config
+C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar.Data\bin\Debug\Seminar.Data.dll
+C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar.Data\bin\Debug\Seminar.Data.pdb
+C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar.Data\bin\Debug\EntityFramework.dll
+C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar.Data\bin\Debug\EntityFramework.xml
+C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar.Data\obj\Debug\Seminar.Data.csprojResolveAssemblyReference.cache
+C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar.Data\obj\Debug\Seminar.Data.csproj.CoreCompileInputs.cache
+C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar.Data\obj\Debug\Seminar.Data.dll
+C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar.Data\obj\Debug\Seminar.Data.pdb
