@@ -1,73 +1,68 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using Seminar.Business.Mappers;
 using Seminar.Business.ViewModels;
 using Seminar.Data;
+using Seminar.Data.Entities;
 
 namespace Seminar.Controllers
 {
     public class CourseParticipantsController : Controller
     {
-        private readonly CourseMapper _courseMapper;
         private readonly CourseParticipantMapper _courseParticipantMapper;
 
         public CourseParticipantsController()
         {
-            _courseMapper = new CourseMapper();
             _courseParticipantMapper = new CourseParticipantMapper();
         }
 
-        // GET: Courses
-        [HttpGet]
-        public ActionResult Index()
-        {
-            using (var context = new SeminarDbContext())
-            {
-                return Json(context.CourseParticipants.Include("Course").AsEnumerable().Select(x =>
-                {
-                    var viewModel = _courseParticipantMapper.MapToView(x);
-                    viewModel.Course = _courseMapper.MapToView(x.Course);
-
-                    return viewModel;
-                }).ToList(), JsonRequestBehavior.AllowGet);
-            }
-        }
-
-        // GET: Courses/Get/5
+        // GET: CourseParticipants/Get/5
         [HttpGet]
         public async Task<ActionResult> Get(int? id)
         {
-            throw new NotImplementedException();
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+
+            using (var context = new SeminarDbContext())
+            {
+                var course = await context.Courses.Include("Participants").SingleAsync(x => x.Id == id);
+                if (course == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+
+                return Json(
+                    course.Participants.Select(x => _courseParticipantMapper.MapToView(x)).ToList(),
+                    JsonRequestBehavior.AllowGet);
+            }
         }
 
-        // POST: Courses/Create
+        // POST: CourseParticipants/Create
         [HttpPost]
         // [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Exclude = "Id")] CourseParticipantViewModel courseParticipant)
+        public async Task<ActionResult> Create(CreateCourseParticipantViewModel courseParticipant) // todo ViewModel CourseId should be GET param.
         {
             if (!ModelState.IsValid) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             using (var context = new SeminarDbContext())
             {
-                var courseModel = await context.Courses.FindAsync(courseParticipant.Course.Id);
+                var courseModel = await context.Courses.FindAsync(courseParticipant.CourseId);
                 if (courseModel == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
 
-                var model = _courseParticipantMapper.MapToModel(courseParticipant);
-                model.Course = courseModel;
+                context.CourseParticipants.Add(new CourseParticipant
+                {
+                    Name = courseParticipant.Name,
+                    Email = courseParticipant.Email,
+                    Course = courseModel
+                });
 
-                context.CourseParticipants.Add(model);
                 await context.SaveChangesAsync();
             }
 
             return new HttpStatusCodeResult(HttpStatusCode.Created);
         }
 
-        // PUT: Courses/Update/5
+        // PUT: CourseParticipants/Update/5
         [HttpPut]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Update(int id, CourseViewModel course)
@@ -75,7 +70,7 @@ namespace Seminar.Controllers
             throw new NotImplementedException();
         }
 
-        // DELETE: Courses/Delete/5
+        // DELETE: CourseParticipants/Delete/5
         [HttpDelete]
         public async Task<ActionResult> Delete(int id)
         {

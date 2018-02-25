@@ -1,25 +1,29 @@
-﻿<h2>Course Frontend Here.</h2>
+﻿<div class="row">
+    <div class="col-md-12">
+        <h2>Participants for {{course.Name}}</h2>
+        <p>
+            From <strong>{{course.From.substr(6).slice(0, -2) | date: "medium" }}</strong>
+            until <strong>{{course.To.substr(6).slice(0, -2) | date: "medium" }}</strong>
+            and in Room {{course.Room}}
+            with {{course.Instructor}}.
+        </p>
+    </div>
 
-<table cellpadding="12" class="table table-bordered table-hover">
-    <tr>
-        <td>Id</td>
-        <td>Name</td>
-        <td>Instructor</td>
-        <td>Room</td>
-        <td>From</td>
-        <td>To</td>
-    </tr>
-    <tr ng-repeat="course in courses">
-        <td>{{course.Id}}</td>
+    <div class="col-md-12">
+        <ul class="cards cards-header">
+            <li>
+                <div class="column title">Name</div>
 
-        <td>{{course.Name}}</td>
+                <div class="column">Email</div>
+            </li>
+        </ul>
 
-        <td>{{course.Instructor}}</td>
+        <ul class="cards">
+            <li ng-repeat="participant in courseParticipants">
+                <div class="column title">{{participant.Name}}</div>
 
-        <td>{{course.Room}}</td>
-        
-        <td>{{course.From}}</td>
-        
-        <td>{{course.To}}</td>
-    </tr>
-</table>
+                <div class="column">{{participant.Email}}</div>
+            </li>
+        </ul>
+    </div>
+</div>

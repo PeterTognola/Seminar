@@ -10,6 +10,10 @@
             return $http.get("/Courses/");
         };
 
+        this.getCourse = function (id) {
+            return $http.get("/Courses/Get/" + id);
+        };
+
         this.createCourse = function (course) {
             return $http({
                 method: "POST",

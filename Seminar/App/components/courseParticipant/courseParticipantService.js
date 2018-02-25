@@ -1,4 +1,4 @@
-﻿app.service("courseService",
+﻿app.service("courseParticipantService",
     function ($http) {
         var postConfig = {
             headers: {
@@ -6,15 +6,15 @@
             }
         };
 
-        this.getCourses = function () {
-            return $http.get("/Courses/");
+        this.getCourseParticipants = function (courseId) {
+            return $http.get("/CourseParticipants/Get/" + courseId);
         };
 
-        this.createCourse = function (course) {
+        this.createCourseParticipant = function (courseParticipant) {
             return $http({
                 method: "POST",
-                url: "/Courses/Create",
-                data: $.param(course),
+                url: "/CourseParticipants/Create",
+                data: $.param(courseParticipant),
                 headers: postConfig.headers
             });
         };

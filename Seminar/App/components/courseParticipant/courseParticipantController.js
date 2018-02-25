@@ -1,31 +1,41 @@
-﻿app.controller("courseController", [
-    "$scope", "courseService",
-    function ($scope, courseService) {
+﻿app.controller("courseParticipantController", [
+    "$scope", "$routeParams", "courseParticipantService", "courseService",
+    function ($scope, $routeParams, courseParticipantService, courseService) {
         $scope.viewModel = {
-            Id: "",
             Name: "",
-            Instructor: "",
-            Room: "",
-            From: "",
-            To: ""
+            Email: "",
+            CourseId: $routeParams.id
         };
 
-        $scope.getCourses = function() {
-            var data = courseService.getCourses();
+        $scope.course = {};
 
-            data.then(function(courses) {
-                $scope.courses = courses.data;
+        $scope.courseParticipants = {};
+
+        $scope.getCourse = function() {
+            var data = courseService.getCourse($routeParams.id);
+
+            data.then(function (course) {
+                $scope.course = course.data;
             });
         };
 
-        $scope.createCourse = function() {
-            var response = courseService.createCourse($scope.viewModel);
+        $scope.getCourseParticipants = function() {
+            var data = courseParticipantService.getCourseParticipants($routeParams.id);
+
+            data.then(function(courseParticipant) {
+                $scope.courseParticipants = courseParticipant.data;
+            });
+        };
+
+        $scope.createCourseParticipant = function() {
+            var response = courseParticipantService.createCourseParticipant($scope.viewModel);
 
             console.log(response);
 
             // todo response.status = 2 is bad.
         };
 
-        $scope.getCourses();
+        $scope.getCourseParticipants();
+        $scope.getCourse();
     }
 ]);

@@ -1,11 +1,6 @@
 ﻿// Configure routes
 var configFunction = function ($routeProvider) {
     $routeProvider
-        .when("/home",
-            {
-                templateUrl: "/App/components/home/homeView.html",
-                controller: "homeController"
-            })
         .when("/course",
             {
                 templateUrl: "/App/components/course/courseView.html",
@@ -16,7 +11,17 @@ var configFunction = function ($routeProvider) {
                 templateUrl: "/App/components/course/courseCreateView.html",
                 controller: "courseController"
             })
-        .otherwise({ redirectTo: "/home", controller: "homeController" }); // todo <component>.routes.js file for each component.
+        .when("/courseParticipant/create/:id",
+            {
+                templateUrl: "/App/components/courseParticipant/courseParticipantCreateView.html",
+                controller: "courseParticipantController"
+            })
+        .when("/courseParticipant/:id",
+            {
+                templateUrl: "/App/components/courseParticipant/courseParticipantView.html",
+                controller: "courseParticipantController"
+            })
+        .otherwise({ redirectTo: "/course", controller: "courseController" }); // todo <component>.routes.js file for each component.
 };
 
 configFunction.$inject = ["$routeProvider"];

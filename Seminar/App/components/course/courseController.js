@@ -10,6 +10,8 @@
             To: ""
         };
 
+        $scope.courses = {};
+
         $scope.getCourses = function() {
             var data = courseService.getCourses();
 
@@ -21,9 +23,12 @@
         $scope.createCourse = function() {
             var response = courseService.createCourse($scope.viewModel);
 
-            console.log(response);
+            if (response.$$state.status === 2) {
+                console.log("failed");
+                return;
+            }
 
-            // todo response.status = 2 is bad.
+            // redirect user.
         };
 
         $scope.getCourses();

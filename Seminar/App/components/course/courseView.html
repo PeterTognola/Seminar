@@ -1,25 +1,53 @@
-﻿<h2>Course Frontend Here.</h2>
+﻿<div class="row">
+    <div class="col-md-12">
+        <h2>Courses</h2>
+    </div>
 
-<table cellpadding="12" class="table table-bordered table-hover">
-    <tr>
-        <td>Id</td>
-        <td>Name</td>
-        <td>Instructor</td>
-        <td>Room</td>
-        <td>From</td>
-        <td>To</td>
-    </tr>
-    <tr ng-repeat="course in courses">
-        <td>{{course.Id}}</td>
+    <div class="col-md-12">
+        <ul class="cards cards-header">
+            <li>
+                <div class="column title">Name</div>
 
-        <td>{{course.Name}}</td>
+                <div class="column">Instructor</div>
 
-        <td>{{course.Instructor}}</td>
+                <div class="column">Room</div>
 
-        <td>{{course.Room}}</td>
-        
-        <td>{{course.From}}</td>
-        
-        <td>{{course.To}}</td>
-    </tr>
-</table>
+                <div class="column">From Date & Time</div>
+
+                <div class="column">To Date & Time</div>
+
+                <div class="column text-center">Participants</div>
+            </li>
+        </ul>
+
+        <ul class="cards">
+            <li ng-repeat="course in courses">
+                <div class="column title">{{course.Name}}</div>
+
+                <div class="column">{{course.Instructor}}</div>
+
+                <div class="column">{{course.Room}}</div>
+
+                <div class="column">
+                    {{course.From.substr(6).slice(0, -2) | date: "mediumDate" }}
+
+                    <span class="sub">
+                        {{course.From.substr(6).slice(0, -2) | date: "shortTime" }}
+                    </span>
+                </div>
+
+                <div class="column">
+                    {{course.To.substr(6).slice(0, -2) | date: "mediumDate" }}
+
+                    <span class="sub">
+                        {{course.To.substr(6).slice(0, -2) | date: "shortTime" }}
+                    </span>
+                </div>
+
+                <div class="column text-center">
+                    <a href="#!courseParticipant/create/{{course.Id}}">Add</a> | <a href="#!courseParticipant/{{course.Id}}">View All</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
