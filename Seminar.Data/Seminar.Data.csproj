@@ -46,7 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\201802251824564_AddedCourseParticipantMigration.cs" />
+    <Compile Include="Migrations\201802251824564_AddedCourseParticipantMigration.Designer.cs">
+      <DependentUpon>201802251824564_AddedCourseParticipantMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="SeminarDbContext.cs" />
     <Compile Include="Entities\Course.cs" />
     <Compile Include="Entities\CourseParticipant.cs" />
@@ -56,6 +59,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201802251824564_AddedCourseParticipantMigration.resx">
+      <DependentUpon>201802251824564_AddedCourseParticipantMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

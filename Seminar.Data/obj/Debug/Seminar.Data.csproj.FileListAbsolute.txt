@@ -9,3 +9,5 @@ C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar.Data\obj\Debug\Seminar.
 C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar.Data\obj\Debug\Seminar.Data.csproj.CoreCompileInputs.cache
 C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar.Data\obj\Debug\Seminar.Data.dll
 C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar.Data\obj\Debug\Seminar.Data.pdb
+C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar.Data\obj\Debug\Seminar.Data.AddedCourseParticipantMigration.resources
+C:\Users\togde\Desktop\Solution\Solution\Seminar\Seminar.Data\obj\Debug\Seminar.Data.csproj.GenerateResource.Cache
