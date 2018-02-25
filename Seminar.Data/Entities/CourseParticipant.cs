@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Seminar.Data.Entities
+﻿namespace Seminar.Data.Entities
 {
 	public class CourseParticipant
 	{
-		public int Id { get; private set; }
+		public int Id { get; set; }
 
-		public CourseParticipant()
-		{
-		}
+        public string Name { get; set; }
+
+        public string Email { get; set; }
+
+        public virtual Course Course { get; set; }
 	}
 }
