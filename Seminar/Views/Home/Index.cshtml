@@ -1,11 +1,19 @@
-﻿@section scripts
-{
-	@Scripts.Render("~/bundles/angular")
-	@Scripts.Render("~/Views/Home/SeminarApp.js")
-	@Scripts.Render("~/Views/Home/HomeCtrl.js")
-}
-
-<div ng-app="Seminar" ng-controller="">
-	<div ng-view></div>
+﻿<div ng-app="Seminar" ng-controller="homeController">
+    <div ng-view></div>
 </div>
 
+@section scripts
+{
+    @* Core Imports *@
+    @Scripts.Render("~/App/seminar.module.js")
+    @Scripts.Render("~/App/seminar.routes.js")
+    @Scripts.Render("~/App/seminar.config.js")
+
+    @* Home Imports *@
+    @Scripts.Render("~/App/components/home/homeController.js")
+    @Scripts.Render("~/App/components/home/homeService.js")
+
+    @* Course Imports *@
+    @Scripts.Render("~/App/components/course/courseController.js")
+    @Scripts.Render("~/App/components/course/courseService.js")
+}
