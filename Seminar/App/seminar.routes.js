@@ -1,5 +1,5 @@
 ﻿// Configure routes
-var configFunction = function ($routeProvider) {
+var configFunction = function ($routeProvider, $httpProvider) {
     $routeProvider
         .when("/course",
             {
@@ -21,7 +21,14 @@ var configFunction = function ($routeProvider) {
                 templateUrl: "/App/components/courseParticipant/courseParticipantView.html",
                 controller: "courseParticipantController"
             })
-        .otherwise({ redirectTo: "/course", controller: "courseController" }); // todo <component>.routes.js file for each component.
+        .otherwise({ redirectTo: "/course", controller: "courseController" });
+
+    //
+    // Because we are using ASP.NET MVC Actions we need to
+    // tell them we are a safe client.
+    var antiForgeryToken = document.getElementById("antiForgeryForm").childNodes[1].value;
+    $httpProvider.defaults.headers.post["__RequestVerificationToken"] = antiForgeryToken;
+
 };
 
-configFunction.$inject = ["$routeProvider"];
+configFunction.$inject = ["$routeProvider", "$httpProvider"];

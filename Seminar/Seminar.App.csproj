@@ -119,6 +119,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\ValidateAntiForgeryHeader.cs" />
     <Compile Include="Controllers\CourseParticipantsController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -136,9 +137,6 @@
     <Content Include="App\components\course\courseService.js" />
     <Content Include="App\components\course\courseCreateView.html" />
     <Content Include="App\components\course\courseView.html" />
-    <Content Include="App\components\home\homeController.js" />
-    <Content Include="App\components\home\homeService.js" />
-    <Content Include="App\components\home\homeView.html" />
     <Content Include="App\seminar.config.js" />
     <Content Include="App\seminar.module.js" />
     <Content Include="App\seminar.routes.js" />

@@ -1,15 +1,20 @@
 ﻿app.controller("courseParticipantController", [
     "$scope", "$window", "$routeParams", "courseParticipantService", "courseService",
     function ($scope, $window, $routeParams, courseParticipantService, courseService) {
-        $scope.viewModel = {
-            Name: "",
-            Email: "",
-            CourseId: $routeParams.id
-        };
+        function load() {
+            $scope.viewModel = {
+                Name: "",
+                Email: "",
+                CourseId: $routeParams.id
+            };
 
-        $scope.course = {};
+            $scope.course = {};
 
-        $scope.courseParticipants = {};
+            $scope.courseParticipants = {};
+
+            $scope.getCourseParticipants();
+            $scope.getCourse();
+        }
 
         $scope.getCourse = function() {
             var data = courseService.getCourse($routeParams.id);
@@ -39,14 +44,8 @@
             $window.location.href = "#!courseParticipant/" + $scope.course.Id;
         };
 
-        function load() {
-            $scope.getCourseParticipants();
-            $scope.getCourse();
-        }
-
-        $scope.$on("$routeChangeStart", function () {
-            load();
-        });
+        $scope.$on("$routeChangeUpdate", load);
+        $scope.$on("$routeChangeSuccess", load);
 
         load();
     }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -39,7 +38,7 @@ namespace Seminar.Controllers
 
         // POST: CourseParticipants/Create
         [HttpPost]
-        // [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryHeader]
         public async Task<ActionResult> Create(CreateCourseParticipantViewModel courseParticipant) // todo ViewModel CourseId should be GET param.
         {
             if (!ModelState.IsValid) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -60,21 +59,6 @@ namespace Seminar.Controllers
             }
 
             return new HttpStatusCodeResult(HttpStatusCode.Created);
-        }
-
-        // PUT: CourseParticipants/Update/5
-        [HttpPut]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Update(int id, CourseViewModel course)
-        {
-            throw new NotImplementedException();
-        }
-
-        // DELETE: CourseParticipants/Delete/5
-        [HttpDelete]
-        public async Task<ActionResult> Delete(int id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
@@ -46,7 +45,7 @@ namespace Seminar.Controllers
 
         // POST: Courses/Create
         [HttpPost]
-        // [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryHeader]
         public async Task<ActionResult> Create([Bind(Exclude = "Id")] CourseViewModel course)
         {
             if (!ModelState.IsValid) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -59,21 +58,6 @@ namespace Seminar.Controllers
             }
 
             return new HttpStatusCodeResult(HttpStatusCode.Created);
-        }
-
-        // PUT: Courses/Update/5
-        [HttpPut]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Update(int id, CourseViewModel course)
-        {
-            throw new NotImplementedException();
-        }
-
-        // DELETE: Courses/Delete/5
-        [HttpDelete]
-        public async Task<ActionResult> Delete(int id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

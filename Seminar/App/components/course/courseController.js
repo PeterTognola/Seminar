@@ -1,16 +1,20 @@
 ﻿app.controller("courseController", [
     "$scope", "$window", "courseService",
     function ($scope, $window, courseService) {
-        $scope.viewModel = {
-            Id: "",
-            Name: "",
-            Instructor: "",
-            Room: "",
-            From: "",
-            To: ""
-        };
+        function load() {
+            $scope.viewModel = {
+                Id: "",
+                Name: "",
+                Instructor: "",
+                Room: "",
+                From: "",
+                To: ""
+            };
 
-        $scope.courses = {};
+            $scope.courses = {};
+
+            $scope.getCourses();
+        }
 
         $scope.getCourses = function() {
             var data = courseService.getCourses();
@@ -32,13 +36,8 @@
             $window.location.href = "#!course";
         };
 
-        function load() {
-            $scope.getCourses();
-        }
-
-        $scope.$on("$routeChangeStart", function () {
-            load();
-        });
+        $scope.$on("$routeChangeUpdate", load);
+        $scope.$on("$routeChangeSuccess", load);
 
         load();
     }
