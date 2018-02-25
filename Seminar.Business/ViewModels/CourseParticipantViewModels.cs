@@ -16,17 +16,4 @@ namespace Seminar.Business.ViewModels
         [Required]
         public CourseViewModel Course { get; set; }
     }
-
-    public class CreateCourseParticipantViewModel
-    {
-        [Required]
-        public string Name { get; set; }
-
-        [Required]
-        [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
-
-        [Required]
-        public int CourseId { get; set; }
-    }
 }
