@@ -1,0 +1,67 @@
+﻿<h2>CreateCourse Frontend Here.</h2>
+
+<form ng-submit="createCourse()">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="courseName">Course Name:</label>
+                <input id="courseName" type="text" placeholder="Name" ng-model="viewModel.Name"/>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="instructorName">Instructor Name:</label>
+                <input id="instructorName" type="text" placeholder="Instructor Name" ng-model="viewModel.Instructor" />
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="roomName">Instructor Name:</label>
+                <input id="roomName" type="text" placeholder="Room Name" ng-model="viewModel.Room" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <div class="input-group date" id="fromDateTime">
+                    <input type="text" class="form-control" placeholder="Date Time From" ng-model="viewModel.From"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            $(function() { $("#fromDateTime").datetimepicker() });
+        </script>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <div class="input-group date" id="toDateTime">
+                    <input type="text" class="form-control" placeholder="Date Time To" ng-model="viewModel.To"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            $(function() { $("#toDateTime").datetimepicker() });
+        </script>
+    </div>
+
+    <input type="submit"/>
+</form>
+

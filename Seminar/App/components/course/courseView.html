@@ -4,21 +4,22 @@
     <tr>
         <td>Id</td>
         <td>Name</td>
-        <td>Email</td>
-        <td>Age</td>
+        <td>Instructor</td>
+        <td>Room</td>
+        <td>From</td>
+        <td>To</td>
     </tr>
     <tr ng-repeat="course in courses">
-        <td>
-            {{course.Id}}
-        </td>
-        <td>
-            {{course.Name}}
-        </td>
-        <td>
-            {{course.Instructor}}
-        </td>
-        <td>
-            {{course.Room}}
-        </td>
+        <td>{{course.Id}}</td>
+
+        <td>{{course.Name}}</td>
+
+        <td>{{course.Instructor}}</td>
+
+        <td>{{course.Room}}</td>
+        
+        <td>{{course.From}}</td>
+        
+        <td>{{course.To}}</td>
     </tr>
 </table>

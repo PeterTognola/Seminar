@@ -11,6 +11,11 @@ var configFunction = function ($routeProvider) {
                 templateUrl: "/App/components/course/courseView.html",
                 controller: "courseController"
             })
+        .when("/course/create",
+            {
+                templateUrl: "/App/components/course/courseCreateView.html",
+                controller: "courseController"
+            })
         .otherwise({ redirectTo: "/home", controller: "homeController" }); // todo <component>.routes.js file for each component.
 };
 

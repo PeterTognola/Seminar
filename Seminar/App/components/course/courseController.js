@@ -1,14 +1,29 @@
 ﻿app.controller("courseController", [
     "$scope", "courseService",
     function ($scope, courseService) {
-        function getCourses() {
+        $scope.viewModel = {
+            Id: "",
+            Name: "",
+            Instructor: "",
+            Room: "",
+            From: "",
+            To: ""
+        };
+
+        $scope.getCourses = function() {
             var data = courseService.getCourses();
 
             data.then(function(courses) {
                 $scope.courses = courses.data;
             });
-        }
+        };
 
-        getCourses();
+        $scope.createCourse = function() {
+            var response = courseService.createCourse($scope.viewModel);
+
+            // todo response.status = 2 is bad.
+        };
+
+        $scope.getCourses();
     }
 ]);
