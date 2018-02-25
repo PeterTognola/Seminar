@@ -10,7 +10,8 @@ namespace Seminar
 		{
 		    bundles.Add(new ScriptBundle("~/bundles/angular").Include(
 		        "~/Scripts/angular.min.js",
-		        "~/Scripts/angular-route.min.js"
+		        "~/Scripts/angular-route.min.js",
+                "~/Scripts/angular-ui/ui-bootstrap.min.js"
 		    ));
 
 		    bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
@@ -27,12 +28,10 @@ namespace Seminar
 		    bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
 		        "~/Scripts/moment.min.js",
 		        "~/Scripts/bootstrap.js",
-		        "~/Scripts/respond.js",
-                "~/Scripts/bootstrap-datetimepicker.min.js"));
+		        "~/Scripts/respond.js"));
 
 		    bundles.Add(new StyleBundle("~/Content/css").Include(
 		        "~/Content/bootstrap.css",
-                "~/Content/bootstrap-datetimepicker.min.css",
                 "~/Content/site.css"));
 
 			// Set EnableOptimizations to false for debugging. For more information,

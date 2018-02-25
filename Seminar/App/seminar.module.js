@@ -1,2 +1,2 @@
 ﻿// Register application
-var app = angular.module("Seminar", ["ngRoute"]);
+var app = angular.module("Seminar", ["ngRoute", "ui.bootstrap"]);

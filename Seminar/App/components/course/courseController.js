@@ -21,6 +21,8 @@
         $scope.createCourse = function() {
             var response = courseService.createCourse($scope.viewModel);
 
+            console.log(response);
+
             // todo response.status = 2 is bad.
         };
 
