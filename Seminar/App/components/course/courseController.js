@@ -1,6 +1,6 @@
 ﻿app.controller("courseController", [
-    "$scope", "courseService",
-    function ($scope, courseService) {
+    "$scope", "$window", "courseService",
+    function ($scope, $window, courseService) {
         $scope.viewModel = {
             Id: "",
             Name: "",
@@ -24,13 +24,22 @@
             var response = courseService.createCourse($scope.viewModel);
 
             if (response.$$state.status === 2) {
-                console.log("failed");
+                toastr.error("Unable to create course!", "Error!");
                 return;
             }
 
-            // redirect user.
+            toastr.success("Course created successfully!", "Success!");
+            $window.location.href = "#!course";
         };
 
-        $scope.getCourses();
+        function load() {
+            $scope.getCourses();
+        }
+
+        $scope.$on("$routeChangeStart", function () {
+            load();
+        });
+
+        load();
     }
 ]);

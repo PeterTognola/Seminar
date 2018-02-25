@@ -1,6 +1,6 @@
 ﻿app.controller("courseParticipantController", [
-    "$scope", "$routeParams", "courseParticipantService", "courseService",
-    function ($scope, $routeParams, courseParticipantService, courseService) {
+    "$scope", "$window", "$routeParams", "courseParticipantService", "courseService",
+    function ($scope, $window, $routeParams, courseParticipantService, courseService) {
         $scope.viewModel = {
             Name: "",
             Email: "",
@@ -30,12 +30,24 @@
         $scope.createCourseParticipant = function() {
             var response = courseParticipantService.createCourseParticipant($scope.viewModel);
 
-            console.log(response);
+            if (response.$$state.status === 2) {
+                toastr.error("Unable to add participant to " + $scope.course.Name + ".", "Error!");
+                return;
+            }
 
-            // todo response.status = 2 is bad.
+            toastr.success("Participant has been added to " + $scope.course.Name + ".", "Success!");
+            $window.location.href = "#!courseParticipant/" + $scope.course.Id;
         };
 
-        $scope.getCourseParticipants();
-        $scope.getCourse();
+        function load() {
+            $scope.getCourseParticipants();
+            $scope.getCourse();
+        }
+
+        $scope.$on("$routeChangeStart", function () {
+            load();
+        });
+
+        load();
     }
 ]);

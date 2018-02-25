@@ -17,7 +17,9 @@ namespace Seminar
 		    bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
 		        "~/Scripts/jquery-{version}.js"));
 
-			bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+		    bundles.Add(new ScriptBundle("~/bundles/toastr").Include("~/Scripts/toastr.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
 						"~/Scripts/jquery.validate*"));
 
 			// Use the development version of Modernizr to develop with and learn from. Then, when you're
@@ -32,6 +34,7 @@ namespace Seminar
 
 		    bundles.Add(new StyleBundle("~/Content/css").Include(
 		        "~/Content/bootstrap.css",
+                "~/Content/toastr.min.css",
                 "~/Content/site.css"));
 
 			// Set EnableOptimizations to false for debugging. For more information,

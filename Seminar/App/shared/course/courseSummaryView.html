@@ -1,0 +1,9 @@
+﻿<div>
+    <h2>{{title}} {{course.Name}}</h2>
+    <p>
+        From <strong>{{course.From.substr(6).slice(0, -2) | date: "medium" }}</strong>
+        until <strong>{{course.To.substr(6).slice(0, -2) | date: "medium" }}</strong>
+        and in Room {{course.Room}}
+        with {{course.Instructor}}.
+    </p>
+</div>
