@@ -1,0 +1,25 @@
+﻿<h2>Course Frontend Here.</h2>
+
+<table cellpadding="12" class="table table-bordered table-hover">
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Instructor</td>
+        <td>Room</td>
+        <td>From</td>
+        <td>To</td>
+    </tr>
+    <tr ng-repeat="course in courses">
+        <td>{{course.Id}}</td>
+
+        <td>{{course.Name}}</td>
+
+        <td>{{course.Instructor}}</td>
+
+        <td>{{course.Room}}</td>
+        
+        <td>{{course.From}}</td>
+        
+        <td>{{course.To}}</td>
+    </tr>
+</table>

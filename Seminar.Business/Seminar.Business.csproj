@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mappers\CourseMapper.cs" />
+    <Compile Include="Mappers\CourseParticipantMapper.cs" />
     <Compile Include="Mappers\IMapper.cs" />
+    <Compile Include="ViewModels\CourseParticipantViewModels.cs" />
     <Compile Include="ViewModels\CourseViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

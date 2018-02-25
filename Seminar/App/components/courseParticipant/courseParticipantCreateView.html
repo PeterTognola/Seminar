@@ -1,0 +1,56 @@
+﻿<h2>CreateCourse Frontend Here.</h2>
+
+<form ng-submit="createCourse()">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="courseName">Course Name</label>
+                <input id="courseName" class="form-control" type="text" placeholder="Name" ng-model="viewModel.Name"/>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="instructorName">Instructor Name</label>
+                <input id="instructorName" class="form-control" type="text" placeholder="Instructor Name" ng-model="viewModel.Instructor" />
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="roomName">Instructor Name</label>
+                <input id="roomName" class="form-control" type="text" placeholder="Room Name" ng-model="viewModel.Room" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="dateTimeFrom">Date Time From</label>
+                <input id="dateTimeFrom" class="form-control" type="text" placeholder="Date From" ng-model="viewModel.From" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="dateTimeTo">Date Time To</label>
+                <input id="dateTimeTo" class="form-control" type="text" placeholder="Date To" ng-model="viewModel.To" />
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>

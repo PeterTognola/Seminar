@@ -48,7 +48,7 @@ namespace Seminar.Controllers
         // POST: Courses/Create
         [HttpPost]
         // [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Exclude = "Id")] CourseParticipantViewModel courseParticipant) // todo check if course exists.
+        public async Task<ActionResult> Create([Bind(Exclude = "Id")] CourseParticipantViewModel courseParticipant)
         {
             if (!ModelState.IsValid) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 

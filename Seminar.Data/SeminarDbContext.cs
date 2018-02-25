@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.Entity.Validation;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Seminar.Data.Entities;
 
 namespace Seminar.Data
@@ -15,6 +10,7 @@ namespace Seminar.Data
 	public class SeminarDbContext : DbContext
 	{
 		public DbSet<Course> Courses { get; set; }
+
 		public DbSet<CourseParticipant> CourseParticipants { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)

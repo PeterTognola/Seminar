@@ -119,6 +119,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CourseParticipantsController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -127,6 +128,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\components\courseParticipant\courseParticipantController.js" />
+    <Content Include="App\components\courseParticipant\courseParticipantCreateView.html" />
+    <Content Include="App\components\courseParticipant\courseParticipantService.js" />
+    <Content Include="App\components\courseParticipant\courseParticipantView.html" />
     <Content Include="App\components\course\courseController.js" />
     <Content Include="App\components\course\courseService.js" />
     <Content Include="App\components\course\courseCreateView.html" />
